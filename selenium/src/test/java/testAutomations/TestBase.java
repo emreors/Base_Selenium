@@ -30,7 +30,7 @@ public class TestBase extends TestCase {
 
     protected static WebDriver driver;
     protected static FluentWait<WebDriver> Fwait;
-    protected static final String SERVIS_ADRESI = "https://hepsiburada.com/";
+    protected static final String SERVIS_ADRESI = "https://open.spotify.com/";
     protected String servisAdresi = SERVIS_ADRESI;
     protected static final Logger Logger = LoggerFactory.getLogger(TestBase.class);
     protected JavascriptExecutor scroll;

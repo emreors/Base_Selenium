@@ -1,15 +1,12 @@
 package testAutomations.seleniumTests;
 
 import testAutomations.Kullanici;
-import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-
-import java.util.ArrayList;
 
 /**
  * Created by Emre ÖRS
@@ -20,25 +17,20 @@ public class testExample extends testAutomations.TestBase {
     private String baseUrl;
     private boolean acceptNextAlert = true;
 
-    @FindBy(xpath = "//div[@id='myAccount']")
-    public WebElement girisYapDropDownMenu;
-    @FindBy(xpath = "//a[@id='login']")
-    public WebElement loginButonuOnDropDownMenu;
+    @FindBy(xpath = "//button[contains(text(),'Oturum aç')]")
+    public WebElement oturumAcButonu;
 
-    @FindBy(xpath = "//input[@id='txtUserName']")
+    @FindBy(xpath = "//input[@id='login-username']")
     public WebElement kullaniciAdiTextBox;
 
-    @FindBy(xpath = "//button[@id='btnLogin']")
-    public WebElement girisYapButonuUsername;
-
-    @FindBy(xpath = "//input[@id='txtPassword']")
+    @FindBy(xpath = "//input[@id='login-password']")
     public WebElement kullaniciPasswordTextBox;
 
-    @FindBy(xpath = "//button[@id='btnEmailSelect']")
-    public WebElement girisYapButonuPassword;
+    @FindBy(xpath = "//p[contains(text(),'Oturum Aç')]")
+    public WebElement oturumAcLoginButonu;
 
-    @FindBy(xpath = "//span[contains(text(),'Hesabım')]")
-    public WebElement hesabim;
+    @FindBy(xpath = "//span[contains(text(),'Ara')]")
+    public WebElement araTextBox;
 
 
 
@@ -47,41 +39,32 @@ public class testExample extends testAutomations.TestBase {
         PageFactory.initElements(driver, this);
         JavascriptExecutor js = (JavascriptExecutor) driver;
 
-        Fwait.until(ExpectedConditions.visibilityOf(girisYapDropDownMenu));
+        Fwait.until(ExpectedConditions.visibilityOf(oturumAcButonu));
 
         Logger.info("Dropdown Menüye Tıklanıyor..");
         try {
-            girisYapDropDownMenu.click();
+            oturumAcButonu.click();
         } catch (Exception e) {
-            Logger.warn("Dropdown Menü Tıklanamadı.");
+            Logger.warn("Oturum Aç Tıklanamadı");
         }
 
-        Fwait.until(ExpectedConditions.visibilityOf(loginButonuOnDropDownMenu));
-        Logger.info("Login Butonuna Tıklanıyor..");
-        try {
-            loginButonuOnDropDownMenu.click();
-        } catch (Exception e) {
-            Logger.warn("Login Butonuna Tıklanamadı!");
-        }
+
 
         Fwait.until(ExpectedConditions.visibilityOf(kullaniciAdiTextBox));
         kullaniciAdiTextBox.click();
-        kullaniciAdiTextBox.sendKeys(Kullanici.KULLANICI1.getAd());
-
-        Fwait.until(ExpectedConditions.visibilityOf(girisYapButonuUsername));
-        girisYapButonuUsername.click();
+        kullaniciAdiTextBox.sendKeys(Kullanici.KULLANICI2.getAd());
 
         Fwait.until(ExpectedConditions.visibilityOf(kullaniciPasswordTextBox));
         kullaniciPasswordTextBox.click();
-        kullaniciPasswordTextBox.sendKeys(Kullanici.KULLANICI1.getSifre());
+        kullaniciPasswordTextBox.sendKeys(Kullanici.KULLANICI2.getSifre());
 
-        Fwait.until(ExpectedConditions.visibilityOf(girisYapButonuPassword));
-        girisYapButonuPassword.click();
+        Fwait.until(ExpectedConditions.visibilityOf(oturumAcLoginButonu));
+        oturumAcLoginButonu.click();
         Thread.sleep(2000);
 
         Logger.info("Login Olunuyor.."); // Login Kontrolü
         try {
-            Fwait.until(ExpectedConditions.visibilityOf(hesabim));
+            Fwait.until(ExpectedConditions.visibilityOf(araTextBox));
         } catch (Exception e) {
             Logger.warn("Login Olunamadı");
         }
