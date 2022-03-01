@@ -33,6 +33,14 @@ public class testSpotify extends testAutomations.TestBase {
     public WebElement araTextBox;
 
 
+    @FindBy(xpath = "//header/div[3]/div[1]/div[1]/form[1]/input[1]")
+    public WebElement araTextBoxUst;
+
+    @FindBy(xpath = "//span[contains(text(),'Hepsini gör')]")
+    public WebElement hepsiniGorButonu;
+
+
+
 
     @Test
     public void testSpotify() throws Exception {
@@ -52,11 +60,11 @@ public class testSpotify extends testAutomations.TestBase {
 
         Fwait.until(ExpectedConditions.visibilityOf(kullaniciAdiTextBox));
         kullaniciAdiTextBox.click();
-        kullaniciAdiTextBox.sendKeys(Kullanici.KULLANICI2.getAd());
+        kullaniciAdiTextBox.sendKeys(Kullanici.KULLANICI3.getAd());
 
         Fwait.until(ExpectedConditions.visibilityOf(kullaniciPasswordTextBox));
         kullaniciPasswordTextBox.click();
-        kullaniciPasswordTextBox.sendKeys(Kullanici.KULLANICI2.getSifre());
+        kullaniciPasswordTextBox.sendKeys(Kullanici.KULLANICI3.getSifre());
 
         Fwait.until(ExpectedConditions.visibilityOf(oturumAcLoginButonu));
         oturumAcLoginButonu.click();
@@ -71,7 +79,15 @@ public class testSpotify extends testAutomations.TestBase {
 
         Fwait.until(ExpectedConditions.visibilityOf(araTextBox));
         araTextBox.click();
-        araTextBox.sendKeys("Rhinogod");
+        Thread.sleep(1000);
+        araTextBoxUst.click();
+        araTextBoxUst.sendKeys("Rhinogod");
+        Thread.sleep(1000);
+
+        hepsiniGorButonu.click();
+        Thread.sleep(2000);
+
+
 
 
 
