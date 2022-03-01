@@ -13,7 +13,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
  * Date 09.01.2022
  */
 
-public class testExample extends testAutomations.TestBase {
+public class testSpotify extends testAutomations.TestBase {
     private String baseUrl;
     private boolean acceptNextAlert = true;
 
@@ -35,13 +35,13 @@ public class testExample extends testAutomations.TestBase {
 
 
     @Test
-    public void testOdev1() throws Exception {
+    public void testSpotify() throws Exception {
         PageFactory.initElements(driver, this);
         JavascriptExecutor js = (JavascriptExecutor) driver;
 
         Fwait.until(ExpectedConditions.visibilityOf(oturumAcButonu));
 
-        Logger.info("Dropdown Menüye Tıklanıyor..");
+        Logger.info("Oturum Açma Butonuna Tıklanıyor..");
         try {
             oturumAcButonu.click();
         } catch (Exception e) {
@@ -68,6 +68,11 @@ public class testExample extends testAutomations.TestBase {
         } catch (Exception e) {
             Logger.warn("Login Olunamadı");
         }
+
+        Fwait.until(ExpectedConditions.visibilityOf(araTextBox));
+        araTextBox.click();
+        araTextBox.sendKeys("Rhinogod");
+
 
 
         System.out.println("Test Tamamlandı!");
