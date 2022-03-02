@@ -39,6 +39,24 @@ public class testSpotify extends testAutomations.TestBase {
     @FindBy(xpath = "//span[contains(text(),'Hepsini gör')]")
     public WebElement hepsiniGorButonu;
 
+    @FindBy(xpath = "//div[contains(text(),'Virtuanal Carnival')]")
+    public WebElement analCarnaval;
+
+    @FindBy(xpath = "//body/div[@id='main']/div[1]/div[2]/div[2]/footer[1]/div[1]/div[2]/div[1]/div[1]/button[1]")
+    public WebElement playButton;
+//
+//    @FindBy(xpath = "")
+//    public WebElement ;
+//
+//    @FindBy(xpath = "")
+//    public WebElement ;
+//
+//    @FindBy(xpath = "")
+//    public WebElement ;
+//
+//    @FindBy(xpath = "")
+//    public WebElement ;
+
 
 
 
@@ -70,7 +88,7 @@ public class testSpotify extends testAutomations.TestBase {
         oturumAcLoginButonu.click();
         Thread.sleep(2000);
 
-        Logger.info("Login Olunuyor.."); // Login Kontrolü
+        Logger.info("Login Olunuyor..");
         try {
             Fwait.until(ExpectedConditions.visibilityOf(araTextBox));
         } catch (Exception e) {
@@ -87,7 +105,17 @@ public class testSpotify extends testAutomations.TestBase {
         hepsiniGorButonu.click();
         Thread.sleep(2000);
 
+        Fwait.until(ExpectedConditions.visibilityOf(analCarnaval));
+        analCarnaval.click();
+        Thread.sleep(2000);
+        Logger.info("Virtuanal Carnaval Seçildi..");
 
+
+        Fwait.until(ExpectedConditions.visibilityOf(playButton));
+        playButton.click();
+        Logger.info("Virtuanal Carnaval Çalınıyor..");
+
+        Thread.sleep(15560);
 
 
 
