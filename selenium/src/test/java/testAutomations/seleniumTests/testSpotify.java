@@ -100,7 +100,7 @@ public class testSpotify extends testAutomations.TestBase {
         Thread.sleep(1000);
         araTextBoxUst.click();
         araTextBoxUst.sendKeys("Rhinogod");
-        Thread.sleep(1000);
+        Thread.sleep(2000);
 
         hepsiniGorButonu.click();
         Thread.sleep(2000);
