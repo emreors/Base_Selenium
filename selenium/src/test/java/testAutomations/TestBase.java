@@ -43,16 +43,13 @@ public class TestBase extends TestCase {
     @Before
     public void setUp() throws IOException {
         Locale.setDefault(new Locale("tr", "TR"));
+
         if (isHeadless) {
             driver = setup_localDriver(isHeadless);
         } else {
             driver = new ChromeDriver();
-
         }
         Logger.info("setUp(servisAdresi=" + servisAdresi + ").");
-
-
-
         Fwait =
                 new FluentWait<WebDriver>(driver)
                         .withTimeout(Duration.ofSeconds(10))

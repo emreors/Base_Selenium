@@ -86,7 +86,7 @@ public class testSpotify extends testAutomations.TestBase {
 
         Fwait.until(ExpectedConditions.visibilityOf(oturumAcLoginButonu));
         oturumAcLoginButonu.click();
-        Thread.sleep(2000);
+        Thread.sleep(2130);
 
         Logger.info("Login Olunuyor..");
         try {
@@ -97,17 +97,23 @@ public class testSpotify extends testAutomations.TestBase {
 
         Fwait.until(ExpectedConditions.visibilityOf(araTextBox));
         araTextBox.click();
-        Thread.sleep(1000);
+        Logger.info("Arama Alanı Tıklandı..");
+        Thread.sleep(1405);
         araTextBoxUst.click();
         araTextBoxUst.sendKeys("Rhinogod");
-        Thread.sleep(2000);
+        Logger.info("Arama Alanına Rhinogod Yazıldı..");
 
+        Thread.sleep(2090);
+
+        Fwait.until(ExpectedConditions.visibilityOf(hepsiniGorButonu));
         hepsiniGorButonu.click();
-        Thread.sleep(2000);
+        Logger.info("gelen sonuçlarda Hepsini gör butonuna tıklandı");
+
+        Thread.sleep(2200);
 
         Fwait.until(ExpectedConditions.visibilityOf(analCarnaval));
         analCarnaval.click();
-        Thread.sleep(2000);
+        Thread.sleep(1234);
         Logger.info("Virtuanal Carnaval Seçildi..");
 
 
