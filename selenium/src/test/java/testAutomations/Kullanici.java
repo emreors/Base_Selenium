@@ -10,8 +10,7 @@ import org.junit.Ignore;
 public enum Kullanici {
 
     KULLANICI1("emre.smfc@gmail.com", "B3n1m4d1m3mr3"),
-    KULLANICI2("rhinogodofficial@gmail.com", "analcarnaval31"),
-    KULLANICI3("emre.smfc@gmail.com", "Ors1234Ors");
+    KULLANICI2("saaa", "bbbb");
 
     private String ad;
     private String sifre;
