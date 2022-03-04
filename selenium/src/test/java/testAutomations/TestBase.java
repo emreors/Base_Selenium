@@ -30,17 +30,25 @@ public class TestBase extends TestCase {
 
     protected static WebDriver driver;
     protected static FluentWait<WebDriver> Fwait;
-    protected static final String SERVIS_ADRESI = "https://hepsiburada.com/";
+    protected static final String SERVIS_ADRESI = "https://open.spotify.com/";
     protected String servisAdresi = SERVIS_ADRESI;
     protected static final Logger Logger = LoggerFactory.getLogger(TestBase.class);
     protected JavascriptExecutor scroll;
     protected StringBuffer verificationErrors = new StringBuffer();
     ChromeOptions options = new ChromeOptions();
 
+    boolean isHeadless = false;
+
+
     @Before
     public void setUp() throws IOException {
         Locale.setDefault(new Locale("tr", "TR"));
-        driver = new ChromeDriver();
+
+        if (isHeadless) {
+            driver = setup_localDriver(isHeadless);
+        } else {
+            driver = new ChromeDriver();
+        }
         Logger.info("setUp(servisAdresi=" + servisAdresi + ").");
         Fwait =
                 new FluentWait<WebDriver>(driver)
@@ -65,6 +73,25 @@ public class TestBase extends TestCase {
         DesiredCapabilities capabilities = DesiredCapabilities.chrome();
         capabilities.setCapability(ChromeOptions.CAPABILITY, options);
         driver.get(servisAdresi);
+    }
+
+    protected static WebDriver setup_localDriver(boolean isHeadless) {
+        System.setProperty("webdriver.chrome.logfile", "chromedriver.log");
+        System.setProperty("webdriver.chrome.verboseLogging", "false");
+
+        ChromeOptions options = new ChromeOptions();
+        if (isHeadless) {
+            options.addArguments("--headless");
+            options.addArguments("--disable-gpu");
+            options.addArguments("--window-size=1920,1080");
+            options.addArguments("--disable-extensions");
+        }
+
+        options.setExperimentalOption("prefs", new HashMap<String, String>() {{put("intl.accept_languages", "tr,tr_TR");}});
+
+        Logger.info("setup_localDriver("+(isHeadless?"headless":"head:real")+").");
+
+        return new ChromeDriver(options);
     }
 
     @After
