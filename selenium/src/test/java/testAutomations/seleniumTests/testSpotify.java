@@ -57,9 +57,6 @@ public class testSpotify extends testAutomations.TestBase {
 //    @FindBy(xpath = "")
 //    public WebElement ;
 
-
-
-
     @Test
     public void testSpotify() throws Exception {
         PageFactory.initElements(driver, this);
