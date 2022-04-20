@@ -38,7 +38,8 @@ public class TestBase extends TestCase {
     ChromeOptions options = new ChromeOptions();
 
     boolean isHeadless = false;
-
+    public String aktifSysUser = System.getProperty("user.name");
+    public String imageSystemPath = "";
 
     @Before
     public void setUp() throws IOException {
@@ -50,6 +51,7 @@ public class TestBase extends TestCase {
             driver = new ChromeDriver();
         }
         Logger.info("setUp(servisAdresi=" + servisAdresi + ").");
+        imageSystemPath = "C:\\Users\\"+ aktifSysUser +"\\Desktop\\Selenium Test Files\\testImage.jpg";
         Fwait =
                 new FluentWait<WebDriver>(driver)
                         .withTimeout(Duration.ofSeconds(10))
