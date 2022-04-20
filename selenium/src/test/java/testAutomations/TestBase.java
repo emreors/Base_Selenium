@@ -87,9 +87,11 @@ public class TestBase extends TestCase {
             options.addArguments("--disable-extensions");
         }
 
-        options.setExperimentalOption("prefs", new HashMap<String, String>() {{put("intl.accept_languages", "tr,tr_TR");}});
+        options.setExperimentalOption("prefs", new HashMap<String, String>() {{
+            put("intl.accept_languages", "tr,tr_TR");
+        }});
 
-        Logger.info("setup_localDriver("+(isHeadless?"headless":"head:real")+").");
+        Logger.info("setup_localDriver(" + (isHeadless ? "headless" : "head:real") + ").");
 
         return new ChromeDriver(options);
     }

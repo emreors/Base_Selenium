@@ -1,12 +1,13 @@
 package testAutomations.seleniumTests;
 
-import testAutomations.Kullanici;
 import org.junit.Test;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import testAutomations.Kullanici;
 
 /**
  * Created by Emre ÖRS
@@ -42,6 +43,10 @@ public class testSpotify extends testAutomations.TestBase {
     @FindBy(xpath = "//div[contains(text(),'Virtuanal Carnival')]")
     public WebElement analCarnaval;
 
+    @FindBy(xpath = "//a[contains(text(),'Virtuanal Carnival')]")
+    public WebElement analCarnavalDogrulama;
+    public String beklenenAnalCarnavalDogrulama = "virtuanal carnival";
+
     @FindBy(xpath = "//body/div[@id='main']/div[1]/div[2]/div[2]/footer[1]/div[1]/div[2]/div[1]/div[1]/button[1]")
     public WebElement playButton;
 //
@@ -61,7 +66,7 @@ public class testSpotify extends testAutomations.TestBase {
     public void testSpotify() throws Exception {
         PageFactory.initElements(driver, this);
         JavascriptExecutor js = (JavascriptExecutor) driver;
-
+        Actions actions = new Actions(driver);
         Fwait.until(ExpectedConditions.visibilityOf(oturumAcButonu));
 
         Logger.info("Oturum Açma Butonuna Tıklanıyor..");
@@ -70,7 +75,6 @@ public class testSpotify extends testAutomations.TestBase {
         } catch (Exception e) {
             Logger.warn("Oturum Aç Tıklanamadı");
         }
-
 
 
         Fwait.until(ExpectedConditions.visibilityOf(kullaniciAdiTextBox));
@@ -109,17 +113,26 @@ public class testSpotify extends testAutomations.TestBase {
         Thread.sleep(2200);
 
         Fwait.until(ExpectedConditions.visibilityOf(analCarnaval));
+//        actions.doubleClick(analCarnaval).build().perform();
         analCarnaval.click();
         Thread.sleep(1234);
         Logger.info("Virtuanal Carnaval Seçildi..");
 
+        boolean displayed = false;
+        do {
+            try {
+                displayed = analCarnavalDogrulama.isDisplayed();
+            } catch (Exception e) {
+                actions.doubleClick(analCarnaval).perform();
+                Thread.sleep(1204);
+            }
+        } while (!displayed);
 
         Fwait.until(ExpectedConditions.visibilityOf(playButton));
         playButton.click();
         Logger.info("Virtuanal Carnaval Çalınıyor..");
 
         Thread.sleep(15560);
-
 
 
         System.out.println("Test Tamamlandı!");
