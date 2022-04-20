@@ -17,7 +17,7 @@ public class testSpotify extends testAutomations.TestBase {
     private String baseUrl;
     private boolean acceptNextAlert = true;
 
-    @FindBy(xpath = "//button[contains(text(),'Oturum aç')]")
+    @FindBy(xpath = "//div[contains(text(),'Oturum aç')]")
     public WebElement oturumAcButonu;
 
     @FindBy(xpath = "//input[@id='login-username']")
