@@ -11,7 +11,7 @@ import testAutomations.Kullanici;
 
 /**
  * Created by Emre ÖRS
- * Date 09.01.2022
+ * Date 09.01.2021
  */
 
 public class testSpotify extends testAutomations.TestBase {

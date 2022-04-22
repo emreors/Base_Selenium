@@ -17,7 +17,7 @@ import java.io.IOException;
 
 /**
  * Created by Emre ÖRS
- * Date 09.01.2022
+ * Date 09.01.2021
  */
 
 public class screenShot extends testAutomations.TestBase {
