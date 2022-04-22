@@ -4,7 +4,7 @@ import org.junit.Ignore;
 
 /**
  * Created by Emre Örs
- * Date :08.01.2022
+ * Date :03.01.2019
  */
 @Ignore
 public enum Kullanici {
