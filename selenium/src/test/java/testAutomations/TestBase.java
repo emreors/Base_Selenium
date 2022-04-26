@@ -3,6 +3,7 @@ package testAutomations;
 import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.Before;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -30,7 +31,7 @@ public class TestBase extends TestCase {
 
     protected static WebDriver driver;
     protected static FluentWait<WebDriver> Fwait;
-    protected static final String SERVIS_ADRESI = "https://open.spotify.com/";
+    protected static final String SERVIS_ADRESI = "https://live.basarsoft.com.tr/botas/web/#/";
     protected String servisAdresi = SERVIS_ADRESI;
     protected static final Logger Logger = LoggerFactory.getLogger(TestBase.class);
     protected JavascriptExecutor scroll;
@@ -51,7 +52,7 @@ public class TestBase extends TestCase {
             driver = new ChromeDriver();
         }
         Logger.info("setUp(servisAdresi=" + servisAdresi + ").");
-        imageSystemPath = "C:\\Users\\"+ aktifSysUser +"\\Desktop\\Selenium Test Files\\testImage.jpg";
+        imageSystemPath = "C:\\Users\\" + aktifSysUser + "\\Desktop\\Selenium Test Files\\testImage.jpg";
         Fwait =
                 new FluentWait<WebDriver>(driver)
                         .withTimeout(Duration.ofSeconds(10))
@@ -96,6 +97,19 @@ public class TestBase extends TestCase {
         Logger.info("setup_localDriver(" + (isHeadless ? "headless" : "head:real") + ").");
 
         return new ChromeDriver(options);
+    }
+
+    public void kullaniciGirisiYapBasarsoft(WebDriver driver, Kullanici kullanici) {
+        try {
+            driver.manage().window().maximize();
+            driver.findElement(By.xpath("//body/div[@id='root']/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")).clear();
+            driver.findElement(By.xpath("//body/div[@id='root']/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/input[1]")).sendKeys(kullanici.getAd());
+            driver.findElement(By.xpath("//input[@name='password']")).clear();
+            driver.findElement(By.xpath("//input[@name='password']")).sendKeys(kullanici.getSifre());
+            driver.findElement(By.xpath("//span[@class='MuiButton-label']")).click();
+        } catch (Exception e) {
+            System.out.println("Zaten giriş yapılmış.");
+        }
     }
 
     @After
