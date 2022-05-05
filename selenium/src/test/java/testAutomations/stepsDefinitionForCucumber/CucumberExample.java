@@ -17,16 +17,15 @@ public class CucumberExample extends TestBase {
 
     private String baseUrl = servisAdresi;
     JavascriptExecutor js = (JavascriptExecutor) driver;
-    @Test
 
     @Given("Tanimli URL acilir.")
-    public void testtanimli_url_acilir() {
+    public void tanimli_url_acilir() {
         PageFactory.initElements(driver, this);
 
     }
 
     @Given("Kullanici adi ve sifre ile sisteme giris yapilir.")
-    public void testkullanici_adi_ve_sifre_ile_sisteme_giris_yapilir() {
+    public void kullanici_adi_ve_sifre_ile_sisteme_giris_yapilir() {
         try {
             kullaniciGirisiYap(driver, Kullanici.KULLANICI3);
         } catch (Exception e) {
