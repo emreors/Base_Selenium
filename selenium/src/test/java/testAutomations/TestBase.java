@@ -3,6 +3,7 @@ package testAutomations;
 import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.Before;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -93,6 +94,21 @@ public class TestBase extends TestCase {
 
         return new ChromeDriver(options);
     }
+
+    public void kullaniciGirisiYap(WebDriver driver, Kullanici kullanici) {
+        try {
+            driver.manage().window().maximize();
+            driver.findElement(By.id("inputUsername")).clear();
+            driver.findElement(By.id("inputUsername")).sendKeys(kullanici.getAd());
+            driver.findElement(By.id("inputPassword")).clear();
+            driver.findElement(By.id("inputPassword")).sendKeys(kullanici.getSifre());
+            driver.findElement(By.id("loginButton")).click();
+        } catch (Exception e) {
+            System.out.println("Zaten giriş yapılmış.");
+        }
+    }
+
+
 
     @After
     public void tearDown() throws Exception {
