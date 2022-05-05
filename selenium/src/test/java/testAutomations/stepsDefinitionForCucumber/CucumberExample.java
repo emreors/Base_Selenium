@@ -22,10 +22,7 @@ public class CucumberExample extends TestBase {
         PageFactory.initElements(driver, this);
 
     }
-    @Given("Kullanici giris butonuna tiklanir.")
-    public void kullanici_giris_butonuna_tiklanir() {
-        // Write code here that turns the phrase above into concrete actions
-    }
+
     @Given("Kullanici adi ve sifre ile sisteme giris yapilir.")
     public void kullanici_adi_ve_sifre_ile_sisteme_giris_yapilir() {
         try {

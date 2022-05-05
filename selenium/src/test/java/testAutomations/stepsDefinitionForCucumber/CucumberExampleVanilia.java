@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -27,16 +28,15 @@ public class CucumberExampleVanilia extends TestBase{
 
     @Test
     public void testCucumberExample() throws Exception {
-
+        PageFactory.initElements(driver, this);
+        JavascriptExecutor js = (JavascriptExecutor) driver;
         System.out.println("testCucumberExample başladı");
+
         try {
             kullaniciGirisiYap(driver, Kullanici.KULLANICI1);
         } catch (Exception e) {
             System.out.println("Zaten giriş yapılmış.");
         }
-        PageFactory.initElements(driver, this);
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        System.out.println("Login oldu");
 
         Fwait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("Main-Div")));
         Fwait.until(ExpectedConditions.visibilityOf(personelModulu));

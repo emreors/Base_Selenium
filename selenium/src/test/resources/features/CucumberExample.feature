@@ -5,7 +5,6 @@ Feature:Cucumber Example
 
   Scenario: Kullanıcı sisteme giriş yapar.
     Given Tanimli URL acilir.
-    Given Kullanici giris butonuna tiklanir.
     Given Kullanici adi ve sifre ile sisteme giris yapilir.
     When Anasayfada ust kisimda bulunan arama yap alanina tiklanir.
     Then Cikis yapilir
