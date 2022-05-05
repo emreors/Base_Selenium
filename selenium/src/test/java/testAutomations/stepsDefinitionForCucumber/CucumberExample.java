@@ -26,7 +26,7 @@ public class CucumberExample extends TestBase {
     @Given("Kullanici adi ve sifre ile sisteme giris yapilir.")
     public void kullanici_adi_ve_sifre_ile_sisteme_giris_yapilir() {
         try {
-            kullaniciGirisiYap(driver, Kullanici.KULLANICI1);
+            kullaniciGirisiYap(driver, Kullanici.KULLANICI3);
         } catch (Exception e) {
             System.out.println("Zaten giriş yapılmış.");
         }
