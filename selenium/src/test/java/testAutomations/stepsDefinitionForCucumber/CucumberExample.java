@@ -1,13 +1,10 @@
 package testAutomations.stepsDefinitionForCucumber;
 
-import org.junit.Test;
-import org.openqa.selenium.By;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-
 import testAutomations.Kullanici;
 import testAutomations.TestBase;
 
@@ -15,36 +12,37 @@ import testAutomations.TestBase;
  * @author Emre Örs
  * @Date 5.05.2022
  */
-public class CucumberExample extends TestBase{
+public class CucumberExample extends TestBase {
 
     private String baseUrl = servisAdresi;
-    private boolean acceptNextAlert = true;
+    JavascriptExecutor js = (JavascriptExecutor) driver;
 
-    @FindBy(xpath = "//body/div[@class='layout-wrapper ']/div[@class='layout-sidebar layout-sidebar-dark ']/div[@id='nano-container']/div[@class='nano-content sidebar-scroll-content me-sidebar']/form[@id='menuform']/ul[@id='menuform:menu']/li[@id='menuform:per_menu3_id']/a[1]")
-    public WebElement personelModulu;
-   
+    @Given("Tanimli URL acilir.")
+    public void tanimli_url_acilir() {
+        PageFactory.initElements(driver, this);
 
-
-    @Test
-    public void testCucumberExample() throws Exception {
-
-        System.out.println("testCucumberExample başladı");
+    }
+    @Given("Kullanici giris butonuna tiklanir.")
+    public void kullanici_giris_butonuna_tiklanir() {
+        // Write code here that turns the phrase above into concrete actions
+    }
+    @Given("Kullanici adi ve sifre ile sisteme giris yapilir.")
+    public void kullanici_adi_ve_sifre_ile_sisteme_giris_yapilir() {
         try {
             kullaniciGirisiYap(driver, Kullanici.KULLANICI1);
         } catch (Exception e) {
             System.out.println("Zaten giriş yapılmış.");
         }
-        PageFactory.initElements(driver, this);
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        System.out.println("Login oldu");
-
-        Fwait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("Main-Div")));
-        Fwait.until(ExpectedConditions.visibilityOf(personelModulu));
-        personelModulu.click();
-        System.out.println("Personel Modulune girildi");
-
-        System.out.println("testCucumberExample Tamamlandı!");
-        System.out.println("LogOut oldu");
-        Thread.sleep(3000);
+        
+    }
+    @When("Anasayfada ust kisimda bulunan arama yap alanina tiklanir.")
+    public void anasayfada_ust_kisimda_bulunan_arama_yap_alanina_tiklanir() {
+        // Write code here that turns the phrase above into concrete actions
+        
+    }
+    @Then("Cikis yapilir")
+    public void cikis_yapilir() {
+        // Write code here that turns the phrase above into concrete actions
+        
     }
 }

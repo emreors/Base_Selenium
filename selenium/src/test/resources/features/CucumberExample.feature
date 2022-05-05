@@ -4,11 +4,11 @@
 Feature:Cucumber Example
 
   Scenario: Kullanıcı sisteme giriş yapar.
-    Given Tanımlı URL açılır.
-    Given Kullanıcı giriş butonuna tıklanır.
-    Given Kullanıcı adı ve şifre ile sisteme giriş yapılır.
-    When Anasayfada üst kısımda bulunan arama yap alanına tıklanır.
-    Then Çıkış yap.
+    Given Tanimli URL acilir.
+    Given Kullanici giris butonuna tiklanir.
+    Given Kullanici adi ve sifre ile sisteme giris yapilir.
+    When Anasayfada ust kisimda bulunan arama yap alanina tiklanir.
+    Then Cikis yapilir
 
 
 
