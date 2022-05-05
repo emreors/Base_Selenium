@@ -16,7 +16,7 @@ import java.util.ArrayList;
  * Date 19.11.2019
  */
 
-public class testExample extends testAutomations.TestBase {
+public class TestExample extends testAutomations.TestBase {
     private String baseUrl;
     private boolean acceptNextAlert = true;
 
@@ -84,7 +84,7 @@ public class testExample extends testAutomations.TestBase {
     public WebElement sepettekiIkinciUrunElement;
 
     @Test
-    public void testOdev1() throws Exception {
+    public void testTestExample() throws Exception {
         PageFactory.initElements(driver, this);
         JavascriptExecutor js = (JavascriptExecutor) driver;
 
